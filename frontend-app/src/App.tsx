@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
+import { useQuery } from 'react-query';
 
-function App() {
+type User = {
+  name: string;
+  age: number;
+};
+
+const getUser = async () => (await fetch('/user/1')).json();
+
+const App: FC = () => {
+  const { data: user } = useQuery<User>(['user', 1], () => getUser());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="pt-4 pl-4 text-red-600 text-4xl font-extrabold">
+      {user?.name} は {user?.age} 歳です。
     </div>
   );
-}
+};
 
 export default App;

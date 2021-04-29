@@ -1,0 +1,44 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'ksbysample'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+[compileJava, compileTestJava]*.options*.compilerArgs = ["-Xlint:all,-options,-processing,-path"]
+
+configurations {
+    compileOnly.extendsFrom annotationProcessor
+
+    // annotationProcessor と testAnnotationProcessor、compileOnly と testCompileOnly を併記不要にする
+    testAnnotationProcessor.extendsFrom annotationProcessor
+    testImplementation.extendsFrom compileOnly
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def lombokVersion = "1.18.20"
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // for lombok
+    // testAnnotationProcessor、testCompileOnly を併記しなくてよいよう configurations で設定している
+    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+    compileOnly("org.projectlombok:lombok:${lombokVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}

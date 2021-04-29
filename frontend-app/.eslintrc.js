@@ -1,29 +1,29 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "es2021": true
+  env: {
+    browser: true,
+    es2021: true,
   },
-  "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
   ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    "ecmaVersion": 12,
-    "project": "./tsconfig.eslint.json",
-    "sourceType": "module",
-    "tsconfigRootDir": __dirname,
+    ecmaVersion: 12,
+    project: './tsconfig.eslint.json',
+    sourceType: 'module',
+    tsconfigRootDir: __dirname,
   },
-  "plugins": [
+  plugins: [
     '@typescript-eslint',
     'import',
     'jsx-a11y',
@@ -31,7 +31,7 @@ module.exports = {
     'react',
     'react-hooks',
   ],
-  "root": true,
+  root: true,
   rules: {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],

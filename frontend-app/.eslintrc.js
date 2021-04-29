@@ -23,8 +23,12 @@ module.exports = {
     "tsconfigRootDir": __dirname,
   },
   "plugins": [
-    "react",
-    "@typescript-eslint"
+    '@typescript-eslint',
+    'import',
+    'jsx-a11y',
+    'prefer-arrow',
+    'react',
+    'react-hooks',
   ],
   "root": true,
   rules: {

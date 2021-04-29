@@ -42,3 +42,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+clean.delete fileTree("src/main/resources/static").include("**/*")
+task copyToStatic(type: Copy) {
+    from project(":frontend-app").file("build")
+    into "src/main/resources/static"
+}
+copyToStatic.dependsOn ":frontend-app:build"
+processResources.dependsOn copyToStatic

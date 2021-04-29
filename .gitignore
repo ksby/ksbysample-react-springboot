@@ -54,3 +54,6 @@ out/
 
 # Gradle
 .gradle/
+
+# backend-app
+backend-app/src/main/resources/static/

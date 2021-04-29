@@ -8,3 +8,13 @@
  */
 
 rootProject.name = 'ksbysample-react-springboot'
+
+rootDir.eachFileRecurse { f ->
+    if (f.name == "build.gradle") {
+        String relativePath = f.parentFile.absolutePath - rootDir.absolutePath
+        String projectName = relativePath.replaceAll("[\\\\\\/]", ":")
+        if (projectName != ":buildSrc") {
+            include projectName
+        }
+    }
+}
